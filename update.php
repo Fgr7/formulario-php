@@ -23,17 +23,28 @@ $row = mysqli_fetch_array($query);
 </head>
 
 <body>
+    
+
     <div class="container mt-5">
+    <h1>Editar cliente</h1>
+    <hr>
         <form action="edit.php" method="POST">
 
             <input type="hidden" name="id" value="<?= $row['id'] ?>"> 
 
             <div class="form-group">
-                <input type="text" class="form-control" name="documento" placeholder="Tipo de documento" value="<?= $row['tipo'] ?>"> 
+                <label for="documento">Tipo de documento</label>
+                <select class="form-control" id="documento" name="documento" required>
+                    <option value="Cédula de ciudadanía" <?= ($row['tipo'] === 'Cédula de ciudadanía') ? 'selected' : '' ?>>Cédula de ciudadanía</option>
+                    <option value="Cédula de extranjería" <?= ($row['tipo'] === 'Cédula de extranjería') ? 'selected' : '' ?>>Cédula de extranjería</option>
+                    <option value="Tarjeta de identidad" <?= ($row['tipo'] === 'Tarjeta de identidad') ? 'selected' : '' ?>>Tarjeta de identidad</option>
+                    <option value="Pasaporte" <?= ($row['tipo'] === 'Pasaporte') ? 'selected' : '' ?>>Pasaporte</option>
+                </select>
             </div>
 
+
             <div class="form-group">
-                <input type="text" class="form-control" name="numero" placeholder="Numero de documento" value="<?= $row['documento'] ?>"> 
+                <input type="text" class="form-control" name="numero" placeholder="Numero de documento" value="<?= $row['documento'] ?>" required pattern="[0-9]+" title="Por favor, ingrese un número de documento valido"> 
             </div>
 
             <div class="form-group">
@@ -61,7 +72,7 @@ $row = mysqli_fetch_array($query);
     </div>
 
     
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.js"></script>
     <script>
         flatpickr(".flatpickr", {

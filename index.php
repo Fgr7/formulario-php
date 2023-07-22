@@ -22,13 +22,19 @@ $query =  mysqli_query($connection, $Qsql);
     <div class="container mt-5">
         <form action="insert_cliente.php" method="POST">
             <h1 class="mb-4">Creación de clientes</h1>
+
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="documento" name="documento" placeholder=" " required>
-                    <label for="documento">Tipo de documento</label>
+                    <select class="form-control" id="documento" name="documento" required>
+                        <option value="" selected disabled>Seleccione un tipo de documento</option>
+                        <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                        <option value="Cédula de extranjería">Cédula de extranjería</option>
+                        <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                    </select>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="numero" name="numero" placeholder=" " required>
+                    <input type="text" class="form-control" id="numero" name="numero" placeholder=" " required pattern="[0-9]+" title="Por favor, ingrese un número de documento valido">
                     <label for="numero">Numero de documento</label>
                 </div>
 
@@ -36,24 +42,28 @@ $query =  mysqli_query($connection, $Qsql);
                     <input type="text" class="form-control" id="pnombre" name="pnombre" placeholder=" " required>
                     <label for="pnombre">Primer nombre</label>
                 </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="snombre" name="snombre" placeholder=" ">
                     <label for="snombre">Segundo nombre</label>
                 </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="papellido" name="papellido" placeholder=" " required>
                     <label for="papellido">Primer apellido</label>
                 </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="sapellido" name="sapellido" placeholder=" ">
                     <label for="sapellido">Segundo apellido</label>
                 </div>
+                
                 <div class="form-floating mb-3">
                 <input type="text" class="form-control flatpickr" id="fnacimiento" name="fnacimiento" placeholder="" required>
                     <label for="fnacimiento">Fecha de nacimiento</label>
             </div>
 
-            <button type="submit" class="btn btn-primary">Agregar usuario</button>
+            <button type="submit" class="btn btn-primary">Agregar cliente</button>
         </form>
     </div>
 
